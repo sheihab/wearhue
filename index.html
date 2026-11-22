@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What Colours Suit My Skin Tone? Free Colour Analysis | Wearhue</title>
+<meta name="description" content="Find out which clothing colours suit your skin tone in 30 seconds. Free colour analysis with your best colours, outfit combinations and a 'does it match?' checker. No sign-up, works on phone and laptop.">
+<link rel="canonical" href="https://sheihab.github.io/wearhue/">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<meta name="theme-color" content="#F7F3EE">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta property="og:title" content="Wearhue — Colours that love your skin">
+<meta property="og:description" content="Find your best colours in 30 seconds. Free, no sign-up.">
+<meta property="og:url" content="https://sheihab.github.io/wearhue/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://sheihab.github.io/wearhue/icon-512.png">
+<meta name="twitter:card" content="summary">
+<!-- Google Search Console: paste your verification tag here -->
+<script src="analytics.js" defer></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Wearhue","url":"https://sheihab.github.io/wearhue/","applicationCategory":"LifestyleApplication","operatingSystem":"Android, Windows, macOS, iOS, ChromeOS","offers":{"@type":"Offer","price":"0","priceCurrency":"AUD"},"description":"Free skin tone colour analysis: best clothing colours, outfit combinations and a colour matching checker."},
+{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What colours look good on brown skin?", "acceptedAnswer": {"@type": "Answer", "text": "Bright, rich colours: cobalt blue, emerald, red, orange, mustard and fuchsia, plus crisp white and cream. Avoid browns that match your own skin. You'll blend in."}}, {"@type": "Question", "name": "What colours suit pale skin?", "acceptedAnswer": {"@type": "Answer", "text": "Soft to medium shades: navy, soft blue, sage, dusty rose and berry. Coral and camel suit warm pale skin. Pure black at your face can look harsh; navy or charcoal is kinder."}}, {"@type": "Question", "name": "What colours suit olive skin?", "acceptedAnswer": {"@type": "Answer", "text": "Earth and jewel tones: olive, terracotta, teal, burgundy, emerald and mustard. Pale yellow and beige close to your skin colour can wash you out."}}, {"@type": "Question", "name": "Am I warm or cool toned?", "acceptedAnswer": {"@type": "Answer", "text": "Green wrist veins, gold jewellery suiting you and tanning easily point to warm. Blue or purple veins, silver and burning easily point to cool. A mix means neutral."}}, {"@type": "Question", "name": "What colour goes with everything?", "acceptedAnswer": {"@type": "Answer", "text": "Neutrals: white, black, grey, navy, beige and denim. Pair any one colour with them and it works. Keep outfits to 2\u20133 main colours."}}]}
+]}
+</script>
+<style>
+:root{
+  --bg:#F7F3EE; --card:#FFFFFF; --ink:#1B1A19; --muted:#6F6A64; --line:#E6E0D8;
+  --accent:#1B1A19; --soft:#EFE9E1; --good:#2F7D5B; --ok:#B7791F; --bad:#B23A3A;
+  --r:18px; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:8px}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:0;z-index:10;background:rgba(247,243,238,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent}
+header.top.scrolled{border-bottom-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px;letter-spacing:-.01em;background:none;border:0;padding:0}
+.logo-dots{display:flex}
+.logo-dots i{width:14px;height:14px;border-radius:50%;margin-right:-5px;border:2px solid var(--bg)}
+.nav-btn{background:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:14px}
+.nav-btn:hover{background:var(--soft)}
+main{flex:1;padding:24px 0 48px}
+.view{display:none;animation:fade .35s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.015em;margin:0}
+h1{font-size:clamp(36px,7vw,64px);line-height:1.05}
+h2{font-size:clamp(26px,4.5vw,36px);line-height:1.15}
+h3{font-size:20px}
+.lead{color:var(--muted);font-size:clamp(16px,2.2vw,19px);max-width:540px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:15px 26px;font-weight:600;font-size:16px;transition:transform .15s,opacity .15s;text-decoration:none}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:none;opacity:.85}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--soft)}
+.btn[disabled]{opacity:.35;pointer-events:none}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+.install{display:none}
+.install.on{display:inline-flex}
+.photo-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.sample{display:none;align-items:center;justify-content:center;gap:14px;margin-top:14px;font-size:14px}
+.sample.on{display:flex}
+.sample i{width:34px;height:34px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.warn{display:none;margin-top:10px;background:#FFF6E5;color:#7A5410;border-radius:12px;padding:10px 14px;font-size:14px;text-align:left}
+.warn.on{display:block}
+.faq{margin-top:48px;max-width:760px}
+.faq h2{margin-bottom:14px}
+.faq details{background:var(--card);border-radius:14px;padding:14px 18px;margin-bottom:10px;box-shadow:var(--shadow)}
+.faq summary{cursor:pointer;font-weight:600;list-style:none}
+.faq summary::after{content:"+";float:right;color:var(--muted)}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:10px 0 0;color:var(--muted)}
+.guides{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.guides a{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;text-decoration:none}
+.guides a:hover{background:var(--soft)}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;min-height:62vh}
+.hero .row{margin-top:28px}
+.ticks{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:var(--muted);font-size:14px}
+.ticks span::before{content:"✓ ";color:var(--good);font-weight:700}
+.hero-art{position:relative;aspect-ratio:1;max-width:420px;width:100%;justify-self:center}
+.hero-art .blob{position:absolute;border-radius:50%;mix-blend-mode:multiply;opacity:.92;animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.how .card b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;margin-bottom:4px}
+.how .num{font-size:13px;color:var(--muted);margin-bottom:10px}
+
+/* steps */
+.step-head{max-width:620px;margin:0 auto 26px;text-align:center}
+.progress{display:flex;gap:6px;justify-content:center;margin-bottom:18px}
+.progress i{width:28px;height:4px;border-radius:4px;background:var(--line)}
+.progress i.on{background:var(--ink)}
+.tones{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:560px;margin:0 auto}
+.tone{aspect-ratio:1;border-radius:50%;border:3px solid transparent;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);transition:transform .15s;position:relative}
+.tone:hover{transform:scale(1.06)}
+.tone.sel{border-color:var(--ink);transform:scale(1.06)}
+.tone.sel::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;font-weight:700;font-size:20px}
+.tone-labels{display:flex;justify-content:space-between;max-width:560px;margin:10px auto 0;color:var(--muted);font-size:13px}
+.or{display:flex;align-items:center;gap:12px;max-width:560px;margin:26px auto;color:var(--muted);font-size:14px}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.photo-box{max-width:560px;margin:0 auto;text-align:center}
+.photo-stage{position:relative;margin-top:14px;display:none}
+.photo-stage canvas{max-width:100%;border-radius:14px;cursor:crosshair;touch-action:manipulation}
+.photo-hint{margin-top:8px}
+.step-foot{display:flex;justify-content:center;gap:12px;margin-top:30px}
+
+.qs{max-width:620px;margin:0 auto;display:grid;gap:16px}
+.q h3{font-size:18px;margin-bottom:4px}
+.q p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.opt{background:var(--bg);border:1.5px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center;font-size:14px;line-height:1.3;transition:border-color .15s,background .15s}
+.opt:hover{border-color:#c9c1b6}
+.opt.sel{border-color:var(--ink);background:#fff;font-weight:600}
+.opt .sw{display:flex;justify-content:center;gap:4px;margin-bottom:8px}
+.opt .sw i{width:16px;height:16px;border-radius:50%}
+
+/* result */
+.res-head{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.res-skin{width:76px;height:76px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.res-head .tag{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.res-actions{margin-left:auto}
+.tabs{display:flex;gap:6px;background:var(--soft);border-radius:999px;padding:4px;width:max-content;max-width:100%;overflow-x:auto;margin-bottom:20px}
+.tab{border:0;background:none;border-radius:999px;padding:9px 18px;font-size:15px;white-space:nowrap;color:var(--muted)}
+.tab.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08);font-weight:600}
+.panel{display:none}
+.panel.on{display:block;animation:fade .3s ease}
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.sec-title{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.sec-title h3{font-size:19px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:12px}
+.swatch{border:0;background:none;padding:0;text-align:left}
+.swatch .chip{aspect-ratio:1/1;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);position:relative;overflow:hidden}
+.swatch .chip .face{position:absolute;left:50%;bottom:-28%;width:62%;aspect-ratio:1;border-radius:50%;transform:translateX(-50%);opacity:0;transition:opacity .2s}
+.swatch:hover .chip .face,.swatch:focus-visible .chip .face{opacity:1}
+.swatch .nm{font-size:13px;margin-top:6px;line-height:1.2}
+.swatch .hx{font-size:11px;color:var(--muted);text-transform:uppercase}
+.swatches.small-sw{grid-template-columns:repeat(4,1fr)}
+.avoid .chip::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1px),rgba(255,255,255,.85) calc(50% - 1px),rgba(255,255,255,.85) calc(50% + 1px),transparent calc(50% + 1px))}
+.metal{display:flex;gap:10px;flex-wrap:wrap}
+.metal span{display:inline-flex;align-items:center;gap:8px;background:var(--bg);border-radius:999px;padding:6px 14px 6px 6px;font-size:14px}
+.metal i{width:22px;height:22px;border-radius:50%}
+.tips{margin:0;padding-left:18px;color:var(--muted);font-size:15px}
+.tips li{margin:6px 0}
+
+.outfits{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.outfit{text-align:center;padding:18px 12px 14px}
+.outfit svg{width:100%;max-width:120px;height:auto}
+.outfit .lbl{font-size:13px;margin-top:8px}
+.outfit .why{font-size:12px;color:var(--muted)}
+
+.checker{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pick{display:flex;flex-direction:column;gap:10px}
+.pick-preview{height:120px;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);position:relative;overflow:hidden}
+.pick-preview input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+.pick-preview .edit{position:absolute;right:10px;bottom:10px;background:rgba(255,255,255,.9);border-radius:999px;padding:4px 10px;font-size:12px;pointer-events:none}
+.mini{display:flex;flex-wrap:wrap;gap:6px}
+.mini button{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
+.verdict{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.score{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:32px;position:relative}
+.score svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.verdict h3{margin-bottom:4px}
+.verdict ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
+.combo-preview{display:flex;height:56px;border-radius:12px;overflow:hidden;margin-top:14px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.combo-preview div{flex:1}
+
+/* sheet */
+.sheet-bg{position:fixed;inset:0;background:rgba(20,18,16,.45);z-index:30;display:none;align-items:flex-end;justify-content:center}
+.sheet-bg.on{display:flex;animation:fadebg .2s}
+@keyframes fadebg{from{opacity:0}}
+.sheet{background:#fff;width:100%;max-width:460px;border-radius:24px 24px 0 0;padding:22px 22px calc(22px + env(safe-area-inset-bottom));animation:up .25s ease}
+@keyframes up{from{transform:translateY(40px)}}
+@media(min-width:700px){.sheet-bg{align-items:center}.sheet{border-radius:24px}}
+.sheet .big{height:140px;border-radius:16px;margin-bottom:16px;position:relative;overflow:hidden}
+.sheet .big .face{position:absolute;left:50%;bottom:-40px;width:120px;height:120px;border-radius:50%;transform:translateX(-50%)}
+.sheet .row .btn{flex:1}
+
+.ad-slot{margin:28px auto 0;max-width:728px;min-height:90px;display:none}
+.ad-slot.on{display:block}
+.ad-label{font-size:11px;color:var(--muted);text-align:center;margin-bottom:4px;letter-spacing:.06em;text-transform:uppercase}
+.join{display:none;margin-top:16px;text-align:center}
+.join.on{display:block}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:.25s;z-index:40;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--muted)}
+
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr;min-height:auto;gap:10px;text-align:left}
+  .hero-art{max-width:260px;order:-1;margin-bottom:6px}
+  .how{grid-template-columns:1fr}
+  .grid2,.checker{grid-template-columns:1fr}
+  .res-actions{margin-left:0;width:100%}
+}
+@media(max-width:480px){
+  .tones{gap:10px}
+  .opts{grid-template-columns:1fr}
+  .opt{display:flex;align-items:center;gap:10px;text-align:left}
+  .opt .sw{margin:0}
+  .card{padding:18px}
+  .outfits{grid-template-columns:repeat(2,1fr);gap:10px}
+  .outfit{padding:14px 8px 12px}
+  .res-skin{width:56px;height:56px}
+  .verdict{grid-template-columns:1fr;justify-items:start}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="wrap bar">
+    <button class="logo" onclick="go('home')" aria-label="Wearhue home">
+      <span class="logo-dots" aria-hidden="true"><i style="background:#E07A5F"></i><i style="background:#2A9D8F"></i><i style="background:#3D405B"></i></span>
+      Wearhue
+    </button>
+    <div class="row" style="gap:8px"><button class="nav-btn install" id="installBtn" aria-label="Install Wearhue app">Install app</button><button class="nav-btn" id="navBtn" onclick="navAction()">Find my colours</button></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- HOME -->
+  <section class="view on" id="v-home">
+    <div class="hero">
+      <div>
+        <h1>Colours that<br>love your skin.</h1>
+        <p class="lead" style="margin-top:18px">Pick your skin tone, answer three quick questions, and get your personal colour palette, outfit combinations, and a checker that tells you if two colours go together.</p>
+        <div class="row">
+          <button class="btn" onclick="go('tone')">Start — takes 30 seconds →</button>
+          <button class="btn ghost" id="backBtn" style="display:none" onclick="go('result')">See my palette</button>
+        </div>
+        <div class="ticks"><span>Free</span><span>No sign-up</span><span>Photos never leave your phone</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="blob" style="width:58%;height:58%;left:4%;top:8%;background:#E9C46A"></div>
+        <div class="blob" style="width:52%;height:52%;right:4%;top:20%;background:#E07A5F;animation-delay:-2s"></div>
+        <div class="blob" style="width:50%;height:50%;left:22%;bottom:4%;background:#2A9D8F;animation-delay:-4s"></div>
+      </div>
+    </div>
+    <div class="how">
+      <div class="card"><div class="num">01</div><b>Your tone</b><span class="muted small">Tap the shade closest to your skin, or tap your cheek in a photo.</span></div>
+      <div class="card"><div class="num">02</div><b>Your undertone</b><span class="muted small">Three easy questions work out if you're warm, cool or neutral.</span></div>
+      <div class="card"><div class="num">03</div><b>Wear it</b><span class="muted small">Get your best colours, ready-made outfits, and a pair checker.</span></div>
+    </div>
+    <div class="ad-slot" data-slot="home"></div>
+    <section class="faq">
+      <h2>Popular questions</h2>
+      <details><summary>What colours look good on brown skin?</summary><p>Bright, rich colours: cobalt blue, emerald, red, orange, mustard and fuchsia, plus crisp white and cream. Avoid browns that match your own skin. You'll blend in. <a href="best-colours-for-dark-skin.html">Full guide for dark & brown skin →</a></p></details>
+      <details><summary>What colours suit pale skin?</summary><p>Soft to medium shades: navy, soft blue, sage, dusty rose and berry. Coral and camel suit warm pale skin. Pure black at your face can look harsh; navy or charcoal is kinder. <a href="best-colours-for-fair-skin.html">Full guide for fair skin →</a></p></details>
+      <details><summary>What colours suit olive skin?</summary><p>Earth and jewel tones: olive, terracotta, teal, burgundy, emerald and mustard. Pale yellow and beige close to your skin colour can wash you out. <a href="best-colours-for-medium-skin.html">Full guide for medium & olive skin →</a></p></details>
+      <details><summary>Am I warm or cool toned?</summary><p>Green wrist veins, gold jewellery suiting you and tanning easily point to warm. Blue or purple veins, silver and burning easily point to cool. A mix means neutral. <a href="warm-vs-cool-undertone.html">4 quick undertone tests →</a></p></details>
+      <details><summary>What colour goes with everything?</summary><p>Neutrals: white, black, grey, navy, beige and denim. Pair any one colour with them and it works. Keep outfits to 2–3 main colours. <a href="what-colours-go-together.html">How to match clothes colours →</a></p></details>
+      <h2 style="margin-top:32px">What goes with…</h2>
+      <div class="guides"><a href="what-colours-go-with-navy.html">Navy</a><a href="what-colours-go-with-black.html">Black</a><a href="what-colours-go-with-grey.html">Grey</a><a href="what-colours-go-with-beige.html">Beige</a><a href="what-colours-go-with-olive-green.html">Olive green</a><a href="what-colours-go-with-brown.html">Brown</a><a href="what-colours-go-with-burgundy.html">Burgundy</a></div>
+    </section>
+  </section>
+
+  <!-- STEP 1: TONE -->
+  <section class="view" id="v-tone">
+    <div class="step-head">
+      <div class="progress"><i class="on"></i><i></i><i></i></div>
+      <h2>Which shade is closest to your skin?</h2>
+      <p class="muted">Look at your jawline or inner arm in daylight.</p>
+    </div>
+    <div class="tones" id="tones" role="radiogroup" aria-label="Skin tone"></div>
+    <div class="tone-labels"><span>Fair</span><span>Medium</span><span>Deep</span></div>
+    <div class="or">or use a photo</div>
+    <div class="photo-box">
+      <div class="photo-btns">
+        <label class="btn ghost" for="cam">Take a selfie</label>
+        <label class="btn ghost" for="photo">Upload a photo</label>
+      </div>
+      <input type="file" id="cam" accept="image/*" capture="user" hidden>
+      <input type="file" id="photo" accept="image/*" hidden>
+      <p class="muted small" style="margin-top:10px">Best in daylight, facing a window, no makeup or filter. Your photo never leaves this device.</p>
+      <div class="photo-stage" id="photoStage">
+        <canvas id="cv" aria-label="Your photo. Tap your cheek to refine the skin sample."></canvas>
+        <div class="sample" id="sample"><span><i id="sampleSw"></i></span><span id="sampleTxt"></span></div>
+        <div class="warn" id="warn"></div>
+        <p class="photo-hint muted small">Not quite right? Tap your cheek or jaw to sample a different spot.</p>
+      </div>
+    </div>
+    <div class="step-foot">
+      <button class="btn ghost" onclick="go('home')">Back</button>
+      <button class="btn" id="toneNext" disabled onclick="go('under')">Next →</button>
+    </div>
+  </section>
+
+  <!-- STEP 2: UNDERTONE -->
+  <section class="view" id="v-under">
+    <div class="step-head">
+      <div class="progress"><i class="on"></i><i class="on"></i><i></i></div>
+      <h2>Let's find your undertone</h2>
+      <p class="muted">Not sure? Skip any question — we'll work with what you give us.</p>
+    </div>
+    <div class="qs" id="qs"></div>
+    <div class="step-foot">
+      <button class="btn ghost" onclick="go('tone')">Back</button>
+      <button class="btn" onclick="finish()">See my colours →</button>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="view" id="v-result">
+    <div class="res-head">
+      <div class="res-skin" id="resSkin"></div>
+      <div>
+        <div class="tag" id="resTag"></div>
+        <h2 id="resTitle"></h2>
+        <div class="muted small" id="resSub"></div>
+      </div>
+      <div class="row res-actions">
+        <button class="btn ghost" onclick="share()">Share</button>
+        </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-tab="colours" role="tab">My colours</button>
+      <button class="tab" data-tab="outfits" role="tab">Outfits</button>
+      <button class="tab" data-tab="check" role="tab">Does it match?</button>
+    </div>
+
+    <div class="panel on" id="p-colours">
+      <div class="grid2">
+        <div class="card">
+          <div class="sec-title"><h3>Your best colours</h3><span class="muted small">Tap any colour</span></div>
+          <div class="swatches" id="best"></div>
+        </div>
+        <div style="display:grid;gap:16px;align-content:start">
+          <div class="card">
+            <div class="sec-title"><h3>Your neutrals</h3></div>
+            <div class="swatches small-sw" id="neutrals"></div>
+          </div>
+          <div class="card">
+            <div class="sec-title"><h3>Go easy on</h3></div>
+            <div class="swatches small-sw avoid" id="avoid"></div>
+          </div>
+          <div class="card">
+            <div class="sec-title"><h3>Jewellery</h3></div>
+            <div class="metal" id="metals"></div>
+          </div>
+          <div class="card">
+            <div class="sec-title"><h3>Tips for you</h3></div>
+            <ul class="tips" id="tips"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-outfits">
+      <p class="muted" style="margin-top:0">Combinations built from your palette. Tap one to see how well it matches.</p>
+      <div class="outfits" id="outfits"></div>
+      <div class="row" style="justify-content:center;margin-top:20px"><button class="btn ghost" onclick="shuffleOutfits()">↻ More combinations</button></div>
+    </div>
+
+    <div class="panel" id="p-check">
+      <p class="muted" style="margin-top:0">Pick two colours (like a top and trousers) and we'll tell you if they work together — and on you.</p>
+      <div class="checker">
+        <div class="card pick">
+          <b>Colour 1 <span class="muted small">· e.g. top</span></b>
+          <div class="pick-preview" id="pv1"><input type="color" id="c1" aria-label="Colour 1"><span class="edit">Tap to change</span></div>
+          <div class="mini" id="m1"></div>
+        </div>
+        <div class="card pick">
+          <b>Colour 2 <span class="muted small">· e.g. bottoms</span></b>
+          <div class="pick-preview" id="pv2"><input type="color" id="c2" aria-label="Colour 2"><span class="edit">Tap to change</span></div>
+          <div class="mini" id="m2"></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <div class="verdict" id="verdict"></div>
+        <div class="combo-preview" id="comboPrev"></div>
+      </div>
+    </div>
+
+    <div class="join card" id="join">
+      <h3>Get new outfit ideas for your palette</h3>
+      <p class="muted small">Optional — one email a month, unsubscribe any time.</p>
+      <a class="btn" id="joinLink" target="_blank" rel="noopener">Join the list</a>
+    </div>
+    <div class="ad-slot" data-slot="result"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Wearhue · Colour advice is a guide, not a rule — wear what makes you happy.</span>
+    <span><a href="what-colours-go-together.html">Colour guide</a> · <a href="privacy.html">Privacy</a></span>
+  </div>
+</footer>
+
+<div class="sheet-bg" id="sheet" onclick="if(event.target===this)closeSheet()">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shName">
+    <div class="big" id="shBig"><div class="face" id="shFace"></div></div>
+    <h3 id="shName"></h3>
+    <p class="muted small" id="shInfo" style="margin:4px 0 16px"></p>
+    <div class="row">
+      <a class="btn" id="shShop" target="_blank" rel="noopener sponsored">Shop this colour</a>
+      <button class="btn ghost" id="shCheck">Match it</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ CONFIG — edit these to make money ============ */
+const CONFIG = {
+  // 1) Google AdSense: paste your publisher id (ca-pub-XXXXXXXX) and slot ids. Leave blank to hide ad slots.
+  ADSENSE_CLIENT: "",
+  ADSENSE_SLOTS: { home: "", result: "" },
+  // 2) Affiliate shop button — HIDDEN while blank (so you never send free traffic). When approved, e.g.:
+  //    "https://www.amazon.com.au/s?k={q}&tag=YOURTAG-22"   ({q} = colour search words)
+  SHOP_URL: "",
+  // 3) Optional email list (free Google Form / Tally / Mailchimp link). Blank hides the box.
+  NEWSLETTER_URL: "",
+  // 4) Free visitor stats: sign up at goatcounter.com (free, no cookies) and put your code here, e.g. "wearhue"
+  GOATCOUNTER: ""
+};
+function track(name){try{window.goatcounter&&window.goatcounter.count&&window.goatcounter.count({path:"event-"+name,title:name,event:true})}catch(e){}}
+
+/* ============ DATA ============ */
+const TONES = ["#F6E1D3","#EECDB6","#E3B999","#D4A17D","#C08A63","#A5714C","#8A5A3B","#6E4530","#553322","#3B2219"];
+const depthOf = i => i<=2 ? "light" : i<=6 ? "medium" : "deep";
+
+const P = {
+ warm:{
+  light:{best:[["#F28C6B","Coral"],["#F4A68C","Peach"],["#E9B949","Golden yellow"],["#A8B26A","Pistachio"],["#5BAE9C","Warm turquoise"],["#D98E5B","Apricot"],["#C7714E","Terracotta"],["#6FA8A0","Sea green"],["#E7C27D","Wheat"],["#B5655A","Rosewood"]],
+    neutrals:[["#F3E7D3","Ivory"],["#C9A97C","Camel"],["#8A6E4B","Warm taupe"],["#2F3B59","Soft navy"]],
+    avoid:[["#000000","Harsh black"],["#DDE3EE","Icy grey"],["#C8A2C8","Cool lilac"],["#C2185B","Magenta"]]},
+  medium:{best:[["#E07A5F","Terracotta"],["#F2A541","Marigold"],["#6B8E23","Olive"],["#2A9D8F","Teal"],["#C1440E","Rust"],["#D4A373","Caramel"],["#9C6644","Cinnamon"],["#E9C46A","Mustard"],["#4F7942","Fern"],["#BC4749","Brick red"]],
+    neutrals:[["#F1E3C8","Cream"],["#C19A6B","Camel"],["#6F4E37","Chocolate"],["#283D3B","Deep teal"]],
+    avoid:[["#B0C4DE","Icy blue"],["#E0B0FF","Lavender"],["#F8F8FF","Stark white"],["#A7A9AC","Cool grey"]]},
+  deep:{best:[["#FFB703","Saffron"],["#FB8500","Tangerine"],["#2A9D8F","Teal"],["#D62828","Tomato red"],["#6A994E","Leaf green"],["#F4A261","Sandy orange"],["#9B2226","Oxblood"],["#00897B","Emerald teal"],["#C9A227","Old gold"],["#E9C46A","Sunflower"]],
+    neutrals:[["#FFF3E0","Warm white"],["#D2B48C","Tan"],["#556B2F","Dark olive"],["#1B3A4B","Petrol"]],
+    avoid:[["#8B6B4A","Mid brown"],["#C8C8D0","Pale grey"],["#E6E6FA","Pastel lilac"],["#BFD7EA","Baby blue"]]}
+ },
+ cool:{
+  light:{best:[["#7FA7D9","Powder blue"],["#E6A8C3","Rose pink"],["#9C89B8","Lavender"],["#5B8FB9","Cornflower"],["#C94C7C","Raspberry"],["#3E7CB1","Sapphire"],["#7DB7A5","Jade mint"],["#B8577E","Berry"],["#A3BCD6","Dusty blue"],["#8E7CC3","Amethyst"]],
+    neutrals:[["#FAFAFA","Soft white"],["#A9A9B3","Dove grey"],["#2E3A59","Navy"],["#5A5A66","Charcoal"]],
+    avoid:[["#E07A2F","Orange"],["#D4A017","Mustard"],["#C19A6B","Camel"],["#6B8E23","Olive"]]},
+  medium:{best:[["#0F52BA","Sapphire"],["#50C878","Emerald"],["#8E44AD","Purple"],["#E0115F","Ruby"],["#C71585","Magenta"],["#4682B4","Steel blue"],["#008080","Teal"],["#DE5D83","Blush"],["#1C39BB","Persian blue"],["#2E8B57","Sea green"]],
+    neutrals:[["#FFFFFF","White"],["#808080","Grey"],["#1F2A44","Navy"],["#2B2B2B","Charcoal"]],
+    avoid:[["#FF8C00","Orange"],["#DAA520","Goldenrod"],["#C19A6B","Camel"],["#808000","Olive"]]},
+  deep:{best:[["#0047AB","Cobalt"],["#FF1493","Hot pink"],["#00A86B","Jade"],["#7B2CBF","Violet"],["#DC143C","Crimson"],["#00B4D8","Cyan"],["#800080","Purple"],["#F72585","Fuchsia"],["#4361EE","Royal blue"],["#06D6A0","Mint"]],
+    neutrals:[["#FFFFFF","Crisp white"],["#BFC0C0","Silver grey"],["#000000","Black"],["#14213D","Midnight"]],
+    avoid:[["#C19A6B","Camel"],["#B8860B","Dark mustard"],["#8B7355","Khaki brown"],["#E9D8A6","Beige"]]}
+ },
+ neutral:{
+  light:{best:[["#E8A0A0","Dusty rose"],["#8FBC8F","Sage"],["#6C8EBF","Soft blue"],["#B39DDB","Soft violet"],["#F4C095","Peach"],["#5F9EA0","Cadet teal"],["#D6A2AD","Mauve"],["#7FB3D5","Sky"],["#E5989B","Blush"],["#A3B18A","Moss"]],
+    neutrals:[["#F5F0E8","Off-white"],["#B8B0A2","Greige"],["#2F3E46","Slate"],["#6B6B6B","Stone grey"]],
+    avoid:[["#FF00FF","Neon magenta"],["#CCFF00","Neon lime"],["#FF6600","Neon orange"],["#FFFF66","Lemon"]]},
+  medium:{best:[["#2E86AB","Ocean"],["#A23B72","Plum"],["#F18F01","Amber"],["#3C9D5D","Jade green"],["#D1495B","Rose red"],["#6A4C93","Grape"],["#EDAE49","Honey"],["#00798C","Deep teal"],["#E07A5F","Clay"],["#577590","Denim"]],
+    neutrals:[["#F4EFE6","Cream"],["#9E9E9E","Grey"],["#22333B","Dark slate"],["#7F5539","Cocoa"]],
+    avoid:[["#FFFF99","Pale yellow"],["#F0E68C","Khaki"],["#CCFF00","Neon lime"],["#D8C3A5","Nude beige"]]},
+  deep:{best:[["#E63946","Red"],["#FFB703","Sun yellow"],["#2A9D8F","Teal"],["#3A86FF","Bright blue"],["#8338EC","Violet"],["#FB5607","Orange"],["#06D6A0","Mint"],["#FF006E","Pink"],["#F4A261","Apricot"],["#9D4EDD","Amethyst"]],
+    neutrals:[["#FFFFFF","White"],["#E9E4D8","Bone"],["#000000","Black"],["#2B2D42","Ink"]],
+    avoid:[["#7A6A53","Dull brown"],["#A0A0A0","Mid grey"],["#C2B280","Sand"],["#DCC7AA","Nude"]]}
+ }
+};
+const META = {
+  warm:{name:"Sunlit",metals:[["#D4AF37","Gold"],["#B87333","Copper"],["#E0B097","Rose gold"]],desc:"Golden, peachy undertone — earthy and sunny shades make you glow."},
+  cool:{name:"Moonlit",metals:[["#C0C0C0","Silver"],["#E5E4E2","Platinum"],["#D9D9E0","White gold"]],desc:"Pink or bluish undertone — blue-based, jewel and berry shades suit you."},
+  neutral:{name:"Balanced",metals:[["#D4AF37","Gold"],["#C0C0C0","Silver"],["#E0B097","Rose gold"]],desc:"A mix of both — you can wear most colours; muted and mid-tones are your sweet spot."}
+};
+const TIPS = {
+  light:["Medium-to-soft shades keep you from looking washed out.","Avoid head-to-toe dark colours near your face — add a lighter layer.","Low contrast outfits (similar lightness) look effortless on you."],
+  medium:["You can carry both rich and soft shades — play with mid contrast.","Wear your strongest colour near your face (tops, scarves).","One bright piece + neutrals is a fail-safe formula."],
+  deep:["Bright, saturated colours and crisp white look stunning against your skin.","Avoid colours very close to your skin shade — add contrast.","High-contrast outfits (dark + bright) are your power move."]
+};
+const QUESTIONS = [
+  {id:"veins",t:"Look at the veins on your inner wrist",d:"In natural light, what colour do they look?",o:[["cool","Blue or purple",["#5B6EAE","#7A5AA6"]],["warm","Green or olive",["#6B8E4E","#8A9A5B"]],["neutral","Hard to tell / both",["#5B6EAE","#6B8E4E"]]]},
+  {id:"metal",t:"Which jewellery looks better on you?",d:"Think about what people compliment.",o:[["cool","Silver",["#C0C0C0","#E5E4E2"]],["warm","Gold",["#D4AF37","#E8C468"]],["neutral","Both look good",["#C0C0C0","#D4AF37"]]]},
+  {id:"sun",t:"How does your skin react to the sun?",d:"Without sunscreen, after a while outside.",o:[["cool","Burns or goes pink",["#F2A0A0","#E57373"]],["warm","Tans easily",["#C68B59","#A86B3C"]],["neutral","Bit of both",["#E8A0A0","#C68B59"]]]}
+];
+
+/* ============ STATE ============ */
+const S = {tone:null, ans:{}, under:null, outfitSeed:0};
+const $ = id => document.getElementById(id);
+const store = {
+  get(){try{return JSON.parse(localStorage.getItem("wearhue")||"null")}catch(e){return null}},
+  set(v){try{localStorage.setItem("wearhue",JSON.stringify(v))}catch(e){}}
+};
+
+/* ============ COLOUR MATHS ============ */
+function hexToRgb(h){h=h.replace("#","");if(h.length===3)h=h.split("").map(c=>c+c).join("");const n=parseInt(h,16);return[n>>16&255,n>>8&255,n&255]}
+function rgbToHex(r,g,b){return"#"+[r,g,b].map(v=>Math.round(v).toString(16).padStart(2,"0")).join("").toUpperCase()}
+function rgbToHsl([r,g,b]){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let h=0,s=0,l=(mx+mn)/2;if(mx!==mn){const d=mx-mn;s=l>.5?d/(2-mx-mn):d/(mx+mn);h=mx===r?(g-b)/d+(g<b?6:0):mx===g?(b-r)/d+2:(r-g)/d+4;h*=60}return[h,s,l]}
+function rgbToLab([r,g,b]){[r,g,b]=[r,g,b].map(v=>{v/=255;return v>.04045?Math.pow((v+.055)/1.055,2.4):v/12.92});let x=(r*.4124+g*.3576+b*.1805)/.95047,y=r*.2126+g*.7152+b*.0722,z=(r*.0193+g*.1192+b*.9505)/1.08883;[x,y,z]=[x,y,z].map(v=>v>.008856?Math.cbrt(v):7.787*v+16/116);return[116*y-16,500*(x-y),200*(y-z)]}
+function dE(a,b){const A=rgbToLab(hexToRgb(a)),B=rgbToLab(hexToRgb(b));return Math.hypot(A[0]-B[0],A[1]-B[1],A[2]-B[2])}
+function lum(h){const[r,g,b]=hexToRgb(h).map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*r+.7152*g+.0722*b}
+const textOn = h => lum(h)>.45?"#1B1A19":"#FFFFFF";
+function colourName(hex){let best=null,bd=1e9;for(const u in P)for(const d in P[u])for(const k of["best","neutrals","avoid"])for(const[h,n]of P[u][d][k]){const x=dE(hex,h);if(x<bd){bd=x;best=n}}return bd<18?best:null}
+
+/* ============ NAV ============ */
+function go(v){
+  document.querySelectorAll(".view").forEach(e=>e.classList.remove("on"));
+  $("v-"+v).classList.add("on");
+  window.scrollTo({top:0,behavior:"smooth"});
+  $("navBtn").textContent = v==="result" ? "Retake" : (store.get()? "My palette" : "Find my colours");
+  $("navBtn").dataset.v = v;
+  if(v==="home") $("backBtn").style.display = store.get()? "inline-flex":"none";
+}
+function navAction(){const v=$("navBtn").dataset.v;if(v==="result")go("tone");else if(store.get()){load(store.get());go("result")}else go("tone")}
+window.addEventListener("scroll",()=>$("top").classList.toggle("scrolled",scrollY>4),{passive:true});
+
+/* ============ STEP 1 ============ */
+function renderTones(){
+  $("tones").innerHTML = TONES.map((c,i)=>`<button class="tone${S.tone===i?" sel":""}" style="background:${c};color:${textOn(c)}" role="radio" aria-checked="${S.tone===i}" aria-label="Skin tone ${i+1} of 10" onclick="pickTone(${i})"></button>`).join("");
+  $("toneNext").disabled = S.tone===null;
+}
+function pickTone(i){S.tone=i;renderTones()}
+/* ---- selfie: on-device skin detection ---- */
+let PH=null; // {w,h,data(ImageData)}
+function isSkin(r,g,b){
+  const y=.299*r+.587*g+.114*b, cb=128-.168736*r-.331264*g+.5*b, cr=128+.5*r-.418688*g-.081312*b;
+  return y>35&&y<235&&cr>=133&&cr<=185&&cb>=55&&cb<=135&&r>g&&r>b&&(r-Math.min(g,b))>12;
+}
+function robustAvg(px){ // drop shadows + highlights: keep middle 50% by luminance
+  if(px.length<40) return null;
+  px.sort((a,b)=>(a[0]*.3+a[1]*.59+a[2]*.11)-(b[0]*.3+b[1]*.59+b[2]*.11));
+  const lo=Math.floor(px.length*.3),hi=Math.ceil(px.length*.8),sl=px.slice(lo,hi);
+  const s=sl.reduce((a,p)=>[a[0]+p[0],a[1]+p[1],a[2]+p[2]],[0,0,0]);
+  return s.map(v=>v/sl.length);
+}
+function sampleRegion(x0,y0,x1,y1,skinOnly){
+  const {w,data}=PH,px=[];x0=Math.max(0,x0|0);y0=Math.max(0,y0|0);x1=Math.min(PH.w,x1|0);y1=Math.min(PH.h,y1|0);
+  const step=Math.max(1,Math.floor(Math.sqrt((x1-x0)*(y1-y0)/6000)));
+  for(let y=y0;y<y1;y+=step)for(let x=x0;x<x1;x+=step){const i=(y*w+x)*4,r=data.data[i],g=data.data[i+1],b=data.data[i+2];if(!skinOnly||isSkin(r,g,b))px.push([r,g,b])}
+  return robustAvg(px);
+}
+function drawPhoto(mark){
+  const cv=$("cv"),c=cv.getContext("2d");c.putImageData(PH.data,0,0);
+  if(mark){const rr=Math.max(10,cv.width/28);c.lineWidth=3;c.strokeStyle="#fff";c.beginPath();c.arc(mark[0],mark[1],rr,0,7);c.stroke();c.lineWidth=1.5;c.strokeStyle="rgba(0,0,0,.6)";c.beginPath();c.arc(mark[0],mark[1],rr+2.5,0,7);c.stroke()}
+}
+function applySample(rgb,how){
+  const hex=rgbToHex(...rgb);let bi=0,bd=1e9;TONES.forEach((t,i)=>{const x=dE(hex,t);if(x<bd){bd=x;bi=i}});
+  pickTone(bi);
+  $("sampleSw").style.background=hex;$("sample").classList.add("on");
+  $("sampleTxt").innerHTML=`${how} → closest shade <b>${bi+1} of 10</b>${bd>14?" <span class='muted'>(rough match)</span>":""}`;
+}
+function lightingCheck(skin){
+  const {data}=PH;let R=0,G=0,B=0,n=0;for(let i=0;i<data.data.length;i+=40){R+=data.data[i];G+=data.data[i+1];B+=data.data[i+2];n++}
+  R/=n;G/=n;B/=n;const L=.3*R+.59*G+.11*B,msgs=[];
+  if(L<70) msgs.push("This photo is quite dark — try facing a window for a more accurate shade.");
+  if(L>210) msgs.push("This photo is very bright — avoid direct flash or harsh sun.");
+  if(skin){const k=(skin[0]-skin[2])/Math.max(1,skin[0]);
+    if(k>.72) msgs.push("Warm/yellow indoor light can make skin look more golden and lighter than it is. Daylight works best — or adjust the shade above.");
+    if(k<.08) msgs.push("Bluish light detected — skin may read cooler than it is.");}
+  $("warn").textContent=msgs.join(" ");$("warn").classList.toggle("on",!!msgs.length);
+}
+function loadPhoto(f){
+  if(!f) return;
+  const img=new Image();
+  img.onload=()=>{
+    const cv=$("cv"),max=900,sc=Math.min(1,max/Math.max(img.width,img.height));
+    cv.width=Math.round(img.width*sc);cv.height=Math.round(img.height*sc);
+    const c=cv.getContext("2d",{willReadFrequently:true});c.drawImage(img,0,0,cv.width,cv.height);
+    PH={w:cv.width,h:cv.height,data:c.getImageData(0,0,cv.width,cv.height)};
+    URL.revokeObjectURL(img.src);
+    $("photoStage").style.display="block";
+    // auto: face usually in the centre / upper-centre of a selfie
+    const W=cv.width,H=cv.height;
+    // search outward from the centre of the face (cheeks/nose zone first)
+    let rgb=null;
+    for(const[x0,y0,x1,y1]of[[.4,.32,.6,.52],[.33,.24,.67,.6],[.25,.15,.75,.7],[0,0,1,1]]){rgb=sampleRegion(W*x0,H*y0,W*x1,H*y1,true);if(rgb)break}
+    lightingCheck(rgb);
+    if(rgb){ drawPhoto(null); applySample(rgb,"Detected skin"); track("selfie-used"); }
+    else { drawPhoto(null); $("sample").classList.remove("on"); toast("Couldn't find skin automatically — tap your cheek"); }
+    $("photoStage").scrollIntoView({behavior:"smooth",block:"center"});
+  };
+  img.onerror=()=>toast("That image couldn't be opened — try a JPG or PNG");
+  img.src=URL.createObjectURL(f);
+}
+["photo","cam"].forEach(id=>$(id).addEventListener("change",e=>{loadPhoto(e.target.files[0]);e.target.value=""}));
+$("cv").addEventListener("click",e=>{
+  if(!PH) return;
+  const cv=$("cv"),r=cv.getBoundingClientRect(),x=(e.clientX-r.left)*cv.width/r.width,y=(e.clientY-r.top)*cv.height/r.height,rad=Math.max(8,cv.width/30);
+  let rgb=sampleRegion(x-rad,y-rad,x+rad,y+rad,true)||sampleRegion(x-rad,y-rad,x+rad,y+rad,false);
+  if(!rgb) return;
+  drawPhoto([x,y]);applySample(rgb,"Your sample");
+});
+
+/* ============ STEP 2 ============ */
+function renderQs(){
+  $("qs").innerHTML = QUESTIONS.map(q=>`<div class="card q"><h3>${q.t}</h3><p>${q.d}</p><div class="opts">${q.o.map(([v,l,sw])=>`<button class="opt${S.ans[q.id]===v?" sel":""}" onclick="answer('${q.id}','${v}')"><span class="sw">${sw.map(c=>`<i style="background:${c}"></i>`).join("")}</span>${l}</button>`).join("")}</div></div>`).join("");
+}
+function answer(q,v){S.ans[q]=S.ans[q]===v?undefined:v;renderQs()}
+function decideUnder(){
+  const c={warm:0,cool:0,neutral:0};Object.values(S.ans).forEach(v=>v&&c[v]++);
+  if(!c.warm&&!c.cool&&!c.neutral) return "neutral";
+  if(c.warm>c.cool&&c.warm>=c.neutral) return "warm";
+  if(c.cool>c.warm&&c.cool>=c.neutral) return "cool";
+  return "neutral";
+}
+function track(n,p){try{window.gtag&&gtag("event",n,p||{})}catch(e){}}
+function finish(){S.under=decideUnder();track("palette_result",{depth:depthOf(S.tone),undertone:S.under});track("palette-"+S.under+"-"+depthOf(S.tone));S.outfitSeed=0;store.set({tone:S.tone,under:S.under});showResult();go("result")}
+function load(v){S.tone=v.tone;S.under=v.under;showResult()}
+
+/* ============ RESULT ============ */
+function pal(){return P[S.under][depthOf(S.tone)]}
+function swatchHTML([h,n],i,set){return`<button class="swatch" onclick="openSheet('${h}','${n.replace(/'/g,"")}','${set}')" aria-label="${n}"><div class="chip" style="background:${h}"><div class="face" style="background:${TONES[S.tone]}"></div></div><div class="nm">${n}</div><div class="hx">${h}</div></button>`}
+function showResult(){
+  const d=depthOf(S.tone),m=META[S.under],p=pal(),skin=TONES[S.tone];
+  $("resSkin").style.background=skin;
+  $("resTag").textContent="Your palette";
+  $("resTitle").textContent=`${m.name} ${d[0].toUpperCase()+d.slice(1)}`;
+  $("resSub").textContent=m.desc;
+  $("best").innerHTML=p.best.map((c,i)=>swatchHTML(c,i,"best")).join("");
+  $("neutrals").innerHTML=p.neutrals.map((c,i)=>swatchHTML(c,i,"neutral")).join("");
+  $("avoid").innerHTML=p.avoid.map((c,i)=>swatchHTML(c,i,"avoid")).join("");
+  $("metals").innerHTML=m.metals.map(([h,n])=>`<span><i style="background:${h}"></i>${n}</span>`).join("");
+  $("tips").innerHTML=TIPS[d].map(t=>`<li>${t}</li>`).join("");
+  renderOutfits();
+  const mk=id=>$(id).innerHTML=[...p.best,...p.neutrals].map(([h,n])=>`<button style="background:${h}" title="${n}" aria-label="${n}" onclick="setPick('${id==="m1"?"c1":"c2"}','${h}')"></button>`).join("");
+  mk("m1");mk("m2");
+  $("c1").value=p.best[0][0].toLowerCase();$("c2").value=p.neutrals[2][0].toLowerCase();
+  check();
+  try{history.replaceState(null,"","?t="+S.tone+"&u="+S.under)}catch(e){}
+}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>switchTab(t.dataset.tab));
+function switchTab(k){document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.dataset.tab===k));document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("on",x.id==="p-"+k))}
+
+/* outfits */
+function hueDiff(a,b){const x=Math.abs(rgbToHsl(hexToRgb(a))[0]-rgbToHsl(hexToRgb(b))[0]);return Math.min(x,360-x)}
+function renderOutfits(){
+  const p=pal(),b=p.best,n=p.neutrals,out=[],seed=S.outfitSeed;
+  const formulas=["Neutral base","Colour pop","Tonal","Bold pair","Soft contrast","Statement"];
+  for(let k=0;k<6;k++){
+    const i=(k+seed*3)%b.length, top=b[i];
+    let bottom,shoe,why;
+    const f=k%3;
+    if(f===0){bottom=n[(k+seed)%n.length];shoe=n[(k+seed+2)%n.length];why="Colour on top, neutral below"}
+    else if(f===1){ // complementary-ish partner from palette
+      const partner=[...b].filter(c=>c!==top).sort((x,y)=>Math.abs(hueDiff(top[0],y[0])-150)-Math.abs(hueDiff(top[0],x[0])-150))[seed%3];
+      bottom=n[(k+seed+1)%n.length];shoe=partner;why="Neutral base + contrasting accent"}
+    else{const near=[...b].filter(c=>c!==top).sort((x,y)=>hueDiff(top[0],x[0])-hueDiff(top[0],y[0]))[seed%2];
+      bottom=near;shoe=n[(k+seed)%n.length];why="Neighbouring colours, easy harmony"}
+    out.push({top,bottom,shoe,why,title:formulas[(k+seed)%formulas.length]});
+  }
+  $("outfits").innerHTML=out.map((o,i)=>`<button class="card outfit" onclick="openOutfit(${i})" style="border:0">${figure(o)}<div class="lbl">${o.top[1]} + ${o.bottom[1]}</div><div class="why">${o.why}</div></button>`).join("");
+  S.outfits=out;
+}
+function figure(o){const s=TONES[S.tone];return`<svg viewBox="0 0 100 170" aria-hidden="true"><circle cx="50" cy="20" r="14" fill="${s}"/><rect x="45" y="32" width="10" height="8" fill="${s}"/><path d="M28 42 Q50 36 72 42 L76 90 L24 90 Z" fill="${o.top[0]}" stroke="rgba(0,0,0,.06)"/><path d="M18 46 L28 42 L26 74 L17 72 Z" fill="${o.top[0]}"/><path d="M82 46 L72 42 L74 74 L83 72 Z" fill="${o.top[0]}"/><circle cx="21" cy="78" r="4" fill="${s}"/><circle cx="79" cy="78" r="4" fill="${s}"/><path d="M26 90 L74 90 L70 152 L53 152 L50 104 L47 152 L30 152 Z" fill="${o.bottom[0]}" stroke="rgba(0,0,0,.06)"/><rect x="27" y="152" width="20" height="9" rx="4" fill="${o.shoe[0]}"/><rect x="53" y="152" width="20" height="9" rx="4" fill="${o.shoe[0]}"/></svg>`}
+function shuffleOutfits(){S.outfitSeed++;renderOutfits()}
+function openOutfit(i){const o=S.outfits[i];switchTab("check");setPick("c1",o.top[0]);setPick("c2",o.bottom[0]);window.scrollTo({top:$("p-check").offsetTop-80,behavior:"smooth"})}
+
+/* checker */
+function setPick(id,h){$(id).value=h.toLowerCase();check()}
+["c1","c2"].forEach(id=>$(id).addEventListener("input",check));
+function flatter(h){
+  const p=pal(),good=[...p.best,...p.neutrals].map(c=>dE(h,c[0])),bad=p.avoid.map(c=>dE(h,c[0]));
+  const g=Math.min(...good),b=Math.min(...bad),skin=dE(h,TONES[S.tone]);
+  return {g,b,skin};
+}
+function check(){
+  const a=$("c1").value.toUpperCase(),b=$("c2").value.toUpperCase();
+  $("pv1").style.background=a;$("pv2").style.background=b;
+  $("comboPrev").innerHTML=`<div style="background:${a}"></div><div style="background:${b};flex:1.3"></div><div style="background:${TONES[S.tone]};flex:.35"></div>`;
+  const [ha,sa,la]=rgbToHsl(hexToRgb(a)),[hb,sb,lb]=rgbToHsl(hexToRgb(b));
+  const neutralA=sa<.15||la>.93||la<.1, neutralB=sb<.15||lb>.93||lb<.1;
+  const hd=hueDiff(a,b), ld=Math.abs(la-lb);
+  let harmony,hs;
+  if(neutralA&&neutralB){harmony="Two neutrals — classic and safe";hs=85}
+  else if(neutralA||neutralB){harmony="Colour + neutral — always works";hs=92}
+  else if(hd<15){harmony= ld>.15?"Tonal look — same colour, different shades":"Very similar colours — add contrast";hs= ld>.15?88:62}
+  else if(hd<=45){harmony="Neighbouring colours — natural harmony";hs=84}
+  else if(hd>=150){harmony="Complementary — bold, eye-catching pair";hs= (sa>.7&&sb>.7&&Math.abs(la-lb)<.1)?64:80}
+  else if(hd>=105&&hd<=135){harmony="Triadic — playful and balanced";hs=74}
+  else {harmony="Unusual pairing — can clash";hs=52}
+  if(!(neutralA||neutralB) && sa>.6&&sb>.6&&ld<.08&&hd>45) hs-=8;
+  const fa=flatter(a),fb=flatter(b);
+  const fs=c=>c.g<16?100:c.b<14?40:c.g<30?80:62;
+  const onYou=(fs(fa)+fs(fb))/2;
+  let score=Math.round(hs*.6+onYou*.4);
+  score=Math.max(20,Math.min(98,score));
+  const col=score>=78?"var(--good)":score>=60?"var(--ok)":"var(--bad)";
+  const head=score>=78?"Great match":score>=60?"Works — with care":"Risky combo";
+  const notes=[harmony];
+  [[a,fa,"Colour 1"],[b,fb,"Colour 2"]].forEach(([h,f,l])=>{
+    const nm=colourName(h);const nmS=nm?` (${nm})`:"";
+    if(f.g<16) notes.push(`${l}${nmS} is in your palette ✓`);
+    else if(f.b<14) notes.push(`${l}${nmS} is a "go easy" shade for you — keep it away from your face`);
+    if(f.skin<14) notes.push(`${l} is very close to your skin tone — it may blend in`);
+  });
+  if(ld<.06&&!(neutralA&&neutralB)&&hd>20) notes.push("Similar brightness — try a lighter or darker version of one");
+  const C=2*Math.PI*44;
+  $("verdict").innerHTML=`<div class="score" style="color:${col}"><svg viewBox="0 0 96 96"><circle cx="48" cy="48" r="44" fill="none" stroke="var(--soft)" stroke-width="6"/><circle cx="48" cy="48" r="44" fill="none" stroke="${col}" stroke-width="6" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-score/100)}"/></svg>${score}</div><div><h3>${head}</h3><ul>${notes.map(n=>`<li>${n}</li>`).join("")}</ul></div>`;
+}
+
+/* sheet */
+function openSheet(h,n,set){
+  $("shBig").style.background=h;$("shFace").style.background=TONES[S.tone];
+  $("shName").textContent=n;
+  $("shInfo").textContent=(set==="avoid"?"Not your strongest shade — wear it away from your face, e.g. trousers or shoes. ":set==="neutral"?"A base colour that pairs with all your best colours. ":"One of your best colours — wear it near your face. ")+h;
+  if(CONFIG.SHOP_URL){$("shShop").style.display="";$("shShop").href=CONFIG.SHOP_URL.replace("{q}",encodeURIComponent(n.toLowerCase()+" clothing"))}else $("shShop").style.display="none";
+  $("shCheck").onclick=()=>{closeSheet();switchTab("check");setPick("c1",h)};
+  $("sheet").classList.add("on");
+}
+function closeSheet(){$("sheet").classList.remove("on")}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet()});
+
+/* share + toast */
+async function share(){track("share");track("share");
+  const url=location.origin+location.pathname+"?t="+S.tone+"&u="+S.under, text=`My colour palette is ${$("resTitle").textContent} — find yours on Wearhue`;
+  try{ if(navigator.share){await navigator.share({title:"Wearhue",text,url});return} await navigator.clipboard.writeText(text+" "+url);toast("Link copied")}catch(e){}
+}
+let tt;function toast(m){$("toast").textContent=m;$("toast").classList.add("on");clearTimeout(tt);tt=setTimeout(()=>$("toast").classList.remove("on"),2400)}
+
+/* ads + list */
+function setupMonetisation(){
+  if(CONFIG.ADSENSE_CLIENT){
+    const s=document.createElement("script");s.async=true;s.crossOrigin="anonymous";
+    s.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+CONFIG.ADSENSE_CLIENT;document.head.appendChild(s);
+    document.querySelectorAll(".ad-slot").forEach(el=>{const slot=CONFIG.ADSENSE_SLOTS[el.dataset.slot];if(!slot)return;
+      el.innerHTML=`<div class="ad-label">Advertisement</div><ins class="adsbygoogle" style="display:block" data-ad-client="${CONFIG.ADSENSE_CLIENT}" data-ad-slot="${slot}" data-ad-format="auto" data-full-width-responsive="true"></ins>`;
+      el.classList.add("on");try{(window.adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}});
+  }
+  if(CONFIG.GOATCOUNTER){const g=document.createElement("script");g.async=true;g.dataset.goatcounter="https://"+CONFIG.GOATCOUNTER+".goatcounter.com/count";g.src="https://gc.zgo.at/count.js";document.head.appendChild(g)}
+  if(CONFIG.NEWSLETTER_URL){$("join").classList.add("on");$("joinLink").href=CONFIG.NEWSLETTER_URL}
+}
+
+/* init */
+$("yr").textContent=new Date().getFullYear();
+renderTones();renderQs();setupMonetisation();
+(function(){
+  const q=new URLSearchParams(location.search),t=parseInt(q.get("t")),u=q.get("u");
+  if(t>=0&&t<10&&P[u]){load({tone:t,under:u});go("result");return}
+  go("home");
+})();
+let deferredPrompt=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;$("installBtn").classList.add("on")});
+$("installBtn").addEventListener("click",async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();try{await deferredPrompt.userChoice}catch(e){}deferredPrompt=null;$("installBtn").classList.remove("on")});
+window.addEventListener("appinstalled",()=>{$("installBtn").classList.remove("on");toast("Wearhue installed")});
+if("serviceWorker" in navigator && location.protocol==="https:"){navigator.serviceWorker.register("sw.js").catch(()=>{})}
+</script>
+</body>
+</html>

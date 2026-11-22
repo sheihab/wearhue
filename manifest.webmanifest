@@ -1,0 +1,19 @@
+{
+  "name": "Wearhue — Colours that love your skin",
+  "short_name": "Wearhue",
+  "description": "Find the clothing colours that suit your skin tone.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F7F3EE",
+  "theme_color": "#F7F3EE",
+  "categories": ["lifestyle", "shopping"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
