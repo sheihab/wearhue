@@ -46,7 +46,7 @@ def page(fn, title, desc, body, faq=None):
     more = "".join(f'<a href="{f}">{esc(l)}</a>' for f,l in ALL_LINKS if f != fn)
     return f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc)}"><link rel="canonical" href="{BASE}{fn}">
-<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:type" content="article"><meta property="og:url" content="{BASE}{fn}"><meta property="og:image" content="{BASE}icon-512.png">
+<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:type" content="article"><meta property="og:url" content="{BASE}{fn}"><meta property="og:image" content="{BASE}og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:site_name" content="Wearhue"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-180.png"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#F7F3EE">
 <script type="application/ld+json">{json.dumps(ld)}</script>
 <script src="analytics.js" defer></script><style>{CSS}</style></head><body>
