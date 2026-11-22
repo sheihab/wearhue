@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+  <title>Wearhue: Outfit colour palettes</title>
+  <link>https://sheihab.github.io/wearhue/</link>
+  <atom:link href="https://sheihab.github.io/wearhue/feed-style.xml" rel="self" type="application/rss+xml"/>
+  <description>Colour guides from Wearhue: find the clothing colours that suit your skin tone.</description>
+  <language>en</language>
+  <item>
+   <title>Old money colour palette: outfit colours to save</title>
+   <link>https://sheihab.github.io/wearhue/what-colours-go-together.html?utm_source=pinterest&amp;utm_medium=pin&amp;utm_campaign=aesthetic-old-money</link>
+   <guid isPermaLink="false">wearhue-aesthetic-old-money</guid>
+   <pubDate>Tue, 24 Nov 2026 07:30:00 +1100</pubDate>
+   <description><![CDATA[<img src="https://sheihab.github.io/wearhue/pins/aesthetic-old-money.png" alt="Old money colour palette: outfit colours to save"/><p>The old money colour palette: cream, navy, camel, forest, burgundy, white. Mix any two and they work. Check how each colour suits your skin tone free on Wearhue.</p>]]></description>
+   <category>old money colour palette, old money outfits, old money aesthetic, outfit colour palette, colour combinations for clothes</category>
+   <enclosure url="https://sheihab.github.io/wearhue/pins/aesthetic-old-money.png" type="image/png" length="0"/>
+   <media:content url="https://sheihab.github.io/wearhue/pins/aesthetic-old-money.png" medium="image" type="image/png"/>
+  </item>
+ </channel>
+</rss>
