@@ -141,6 +141,12 @@ for slug,a,b,sub,cols in AESTHETIC:
         page="what-colours-go-together.html", board=B_STYLE, title=f"{a} outfit ideas: 3 colour combinations",
         desc=f"Three {a.lower()} outfit colour combinations: {cols[0][1].lower()} + {cols[1][1].lower()}, {cols[2][1].lower()} + {cols[3][1].lower()}, {cols[4][1].lower()} + {cols[5][1].lower()}. Find the colours that suit you free on Wearhue.", kw=kw + ", outfit ideas")
 
+WELCOME = dict(kind="grid", fn="wearhue-find-your-colours", a="Find the colours", b="that love your skin", sub="Free · 30 seconds · no sign-up", chip="#A5714C",
+    cols=[("#E07A5F","Terracotta"),("#2A9D8F","Teal"),("#E9C46A","Mustard"),("#0F52BA","Sapphire"),("#E6A8C3","Rose pink"),("#6B8E23","Olive"),("#800020","Burgundy"),("#F1E3C8","Cream"),("#1F2A44","Navy")],
+    page="", board=B_SKIN, title="Find the clothing colours that suit your skin tone (free)",
+    desc="Pick your skin tone or take a selfie, answer 3 quick questions, and get your best colours, outfit ideas and a 'does it match?' checker. Free, no sign-up, photos never leave your phone.",
+    kw="colour analysis, what colours suit me, skin tone colours, best colours for my skin tone, free colour analysis")
+
 # ---------------------------------------------------------------- rendering
 def fs_big(b): return 86 if len(b) < 18 else 74 if len(b) < 24 else 64
 HEAD = '<html><body style="margin:0"><div style="width:1000px;height:1500px;background:#F7F3EE;font-family:-apple-system,Segoe UI,Roboto,Helvetica,sans-serif;color:#1B1A19;display:flex;flex-direction:column;align-items:center;padding:86px 64px 70px;box-sizing:border-box">'
@@ -195,9 +201,10 @@ def interleave2(pins):
     keyed.sort(key=lambda x: (x[0], x[1]))
     return [p for _,_,p in keyed]
 
+TODAY_START = [datetime.datetime(2026, 11, 22, 15, 20, tzinfo=SYD), datetime.datetime(2026, 11, 22, 19, 30, tzinfo=SYD)]
 def schedule(n):
     days = (LAST_DAY - FIRST_DAY).days + 1
-    slots = [datetime.datetime.combine(FIRST_DAY + datetime.timedelta(d), datetime.time(h, m), SYD) for d in range(days) for h,m in SLOTS]
+    slots = TODAY_START + [datetime.datetime.combine(FIRST_DAY + datetime.timedelta(d), datetime.time(h, m), SYD) for d in range(days) for h,m in SLOTS]
     return [slots[round(i * (len(slots)-1) / max(1, n-1))] for i in range(n)]
 
 async def main():
@@ -209,7 +216,13 @@ async def main():
         for p in PINS:
             await pg.set_content(render(p))
             await pg.screenshot(path=os.path.join(HERE, "pins", p["fn"]+".png"), clip={"x":0,"y":0,"width":1000,"height":1500})
+        await pg.set_content(render(WELCOME))
+        await pg.screenshot(path=os.path.join(HERE, "pins", WELCOME["fn"]+".png"), clip={"x":0,"y":0,"width":1000,"height":1500})
         await br.close()
+    os.makedirs(os.path.join(HERE, "pinterest-csv"), exist_ok=True)
+    with open(os.path.join(HERE, "pinterest-csv", "test-welcome-pin.csv"), "w", newline="") as f:
+        w = csv.writer(f); w.writerow(["Title","Media URL","Pinterest board","Thumbnail","Description","Link","Publish date","Keywords"])
+        w.writerow([WELCOME["title"], SITE+"pins/"+WELCOME["fn"]+".png", WELCOME["board"], "", WELCOME["desc"], SITE+"?utm_source=pinterest&utm_medium=pin&utm_campaign=welcome", "", WELCOME["kw"]])
     pins = interleave2(PINS); times = schedule(len(pins))
     rows = [dict(time=t.isoformat(), utc=t.astimezone(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S"),
                  title=p["title"][:100], description=p["desc"][:500], keywords=p["kw"], board=p["board"],
@@ -221,7 +234,8 @@ async def main():
             t = datetime.datetime.fromisoformat(r["time"])
             w.writerow([i, t.strftime("%a %d %b %Y"), t.strftime("%I:%M %p").lstrip("0"), r["board"], r["title"], r["link"], r["image"], r["keywords"]])
     d = os.path.join(HERE, "pinterest-csv"); os.makedirs(d, exist_ok=True)
-    for f in os.listdir(d): os.remove(os.path.join(d, f))
+    for f in os.listdir(d):
+        if not f.startswith("test-"): os.remove(os.path.join(d, f))
     for b in range(0, len(rows), 10):
         with open(os.path.join(d, f"batch-{b//10+1:02d}.csv"), "w", newline="") as f:
             w = csv.writer(f); w.writerow(["Title","Media URL","Pinterest board","Thumbnail","Description","Link","Publish date","Keywords"])
