@@ -1,13 +1,4 @@
-# Wearhue: find the clothing colours that suit your skin tone
-
-**Try it free: https://sheihab.github.io/wearhue/**
-
-Pick your skin tone (or take a selfie, which never leaves your phone), answer 3 quick questions, and get your best colours, outfit ideas and a "does it match?" checker. Works on phone and laptop, no sign-up.
-
-**Colour guides:** [dark & brown skin](https://sheihab.github.io/wearhue/best-colours-for-dark-skin.html) · [medium & olive skin](https://sheihab.github.io/wearhue/best-colours-for-medium-skin.html) · [fair skin](https://sheihab.github.io/wearhue/best-colours-for-fair-skin.html) · [warm vs cool undertone](https://sheihab.github.io/wearhue/warm-vs-cool-undertone.html) · [what colours go together](https://sheihab.github.io/wearhue/what-colours-go-together.html)
-
----
-
+# Wearhue: developer notes
 
 A free web app. Pick your skin tone, answer 3 undertone questions, and get your best colours, neutrals, colours to avoid, jewellery metals, outfit combinations, and a "Does it match?" checker for any two colours.
 
