@@ -186,6 +186,9 @@ def render(p):
 def interleave2(pins):
     groups = {}
     for p in pins: groups.setdefault(p["board"], []).append(p)
+    rank = {"grid":0, "rows":1, "outfits":2, "dodont":3}
+    for b in groups:   # spread each topic's 2-4 designs across the whole period
+        groups[b] = [p for _,_,p in sorted(((rank[p["kind"]], i, p) for i,p in enumerate(groups[b])), key=lambda x: (x[0], x[1]))]
     keyed = []
     for b,l in groups.items():
         for i,p in enumerate(l): keyed.append(((i+0.5)/len(l), b, p))
